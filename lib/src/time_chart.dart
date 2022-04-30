@@ -19,6 +19,7 @@ class TimeChart extends StatelessWidget {
     this.tooltipBackgroundColor,
     this.tooltipStart = "START",
     this.tooltipEnd = "END",
+    this.toolTipFontSize,
     this.activeTooltip = true,
     this.viewMode = ViewMode.weekly,
     this.defaultPivotHour = 0,
@@ -80,6 +81,8 @@ class TimeChart extends StatelessWidget {
   /// Default is "end"
   final String tooltipEnd;
 
+  final int? toolTipFontSize;
+
   /// If it's `true` active showing the tooltip when tapped a bar.
   ///
   /// Default value is `true`
@@ -127,6 +130,7 @@ class TimeChart extends StatelessWidget {
           tooltipBackgroundColor: tooltipBackgroundColor,
           tooltipStart: tooltipStart,
           tooltipEnd: tooltipEnd,
+          toolTipFontSize: toolTipFontSize,
           activeTooltip: activeTooltip,
           viewMode: viewMode,
           defaultPivotHour: defaultPivotHour,
