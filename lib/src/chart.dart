@@ -38,6 +38,7 @@ class Chart extends StatefulWidget {
     required this.tooltipBackgroundColor,
     required this.tooltipStart,
     required this.tooltipEnd,
+    this.toolTipFontSize,
     required this.activeTooltip,
     required this.viewMode,
     required this.defaultPivotHour,
@@ -53,6 +54,7 @@ class Chart extends StatefulWidget {
   final Color? tooltipBackgroundColor;
   final String tooltipStart;
   final String tooltipEnd;
+  final int? toolTipFontSize;
   final bool activeTooltip;
   final ViewMode viewMode;
   final int defaultPivotHour;
@@ -274,6 +276,7 @@ class ChartState extends State<Chart>
           direction: direction,
           start: widget.tooltipStart,
           end: widget.tooltipEnd,
+          toolTipFontSize: widget.toolTipFontSize,
         ),
       ),
     );

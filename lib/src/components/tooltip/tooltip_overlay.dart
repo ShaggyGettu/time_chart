@@ -23,6 +23,7 @@ class TooltipOverlay extends StatelessWidget {
     this.backgroundColor,
     required this.start,
     required this.end,
+    this.toolTipFontSize,
   })  : assert((amountHour != null && amountDate != null) ||
             (timeRange != null && bottomHour != null)),
         super(key: key);
@@ -36,6 +37,7 @@ class TooltipOverlay extends StatelessWidget {
   final Color? backgroundColor;
   final String start;
   final String end;
+  final int? toolTipFontSize;
 
   /// [DateTimeRange.end]를 기준으로 [bottomHour]에 의해 다음날로 수정되었을 수 있다.
   ///
@@ -65,6 +67,7 @@ class TooltipOverlay extends StatelessWidget {
           timeRange: _getActualDateTime(timeRange!),
           start: start,
           end: end,
+          fontSize: toolTipFontSize,
         );
         break;
       case ChartType.amount:
@@ -103,11 +106,13 @@ class _TimeTooltipOverlay extends StatelessWidget {
     required this.timeRange,
     required this.start,
     required this.end,
+    this.fontSize,
   }) : super(key: key);
 
   final DateTimeRange timeRange;
   final String start;
   final String end;
+  final int? fontSize;
 
   DateTime get _sleepTime => timeRange.start;
 
@@ -120,12 +125,18 @@ class _TimeTooltipOverlay extends StatelessWidget {
     return translations.formatTimeOfDayWidget(
       a: Text(
         translations.dateFormat('a', dateTime),
-        style: subtitle1.copyWith(color: subtitle1.color!.withOpacity(0.5)),
+        style: subtitle1.copyWith(
+          color: subtitle1.color!.withOpacity(0.5),
+          fontSize: fontSize?.toDouble(),
+        ),
         textScaleFactor: 1.0,
       ),
       hMM: Text(
         translations.dateFormat('h:mm', dateTime),
-        style: textTheme.headline4!.copyWith(height: 1.1),
+        style: textTheme.headline4!.copyWith(
+          height: 1.1,
+          fontSize: fontSize!.toDouble(),
+        ),
         textScaleFactor: 1.0,
       ),
     );
